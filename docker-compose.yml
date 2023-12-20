@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+  app:
+    image: node:alpine
+    ports:
+      - 3000:3000
+    working_dir: /home/app
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /home/app
+    tty: true
+    container_name: delliv-app
+  
+  api:
+    build: ./backend
+    ports:
+      - 3333:3333
+    volumes:
+      - ./backend:/home/node/app
+    container_name: delliv-api
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=delliv
+    ports:
+      - '5432:5432'
+    container_name: delliv-db  

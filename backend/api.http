@@ -1,0 +1,35 @@
+GET http://localhost:3333/orders 
+
+###
+POST http://localhost:3333/orders
+Content-Type: application/json
+
+{
+    "name": "Adel",
+    "address": "Av. Renata 372",
+    "status": "pending"
+}
+
+###
+GET http://localhost:3333/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
+
+###
+PATCH http://localhost:3333/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
+Content-Type: application/json
+
+{
+    "status": "processing"
+}
+
+###
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "Adel",
+    "email": "adelblande@gmail.com",
+    "password": "Adel1234"
+}
+
+###
+GET http://localhost:3333/users/adelblande@gmail.com
