@@ -39,3 +39,6 @@ lerna-debug.log*
 
 # Docker
 .pgdata
+
+# private key and public key
+*.pem

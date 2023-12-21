@@ -1,28 +1,36 @@
-GET http://localhost:3333/orders 
+@baseUrl = http://localhost:3333
+
+@authToken = {{authenticate.response.body.accessToken}}
+
+
+GET {{baseUrl}}/orders 
+Authorization: Bearer {{authToken}}
 
 ###
-POST http://localhost:3333/orders
+POST {{baseUrl}}/orders
 Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 {
-    "name": "Adel",
-    "address": "Av. Renata 372",
+    "name": "Delliv",
+    "address": "Av. Sapopemba 1372",
     "status": "pending"
 }
 
 ###
-GET http://localhost:3333/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
-
+GET {{baseUrl}}/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
+Authorization: Bearer {{authToken}}
 ###
-PATCH http://localhost:3333/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
+PATCH {{baseUrl}}/orders/1f3bf06b-5c53-42f2-99e6-2fb0ff98b2c4
 Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 {
     "status": "processing"
 }
 
 ###
-POST http://localhost:3333/users
+POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
@@ -32,4 +40,15 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3333/users/adelblande@gmail.com
+GET {{baseUrl}}/users/adelblande@gmail.com
+
+
+###
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+    "email": "adelblande@gmail.com",
+    "password": "Adel1234"
+}
