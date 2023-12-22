@@ -1,11 +1,13 @@
-import './App.css'
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./routes/AppRoutes";
+import { AuthRoutes } from "./routes/AuthRoutes";
 
-function App() {
+export function App() {
+  const isAuthenticated = true;
+
   return (
-    <>
-      <h1>Adel</h1>
-    </>
-  )
+    <BrowserRouter>
+      {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
+    </BrowserRouter>
+  );
 }
-
-export default App
