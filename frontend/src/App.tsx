@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./store";
 
 export function App() {
+  // const accessToken = localStorage.getItem("@delliv:accessToken");
   const { isAuthenticated } = useSelector((state: RootState) => state.user);
 
   return (

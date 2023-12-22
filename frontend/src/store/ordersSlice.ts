@@ -18,10 +18,15 @@ const slice = createSlice({
     setOrders(state, { payload }: PayloadAction<OrderProps[]>) {
       return { ...state, orders: payload };
     },
+    setStatus(state, { payload }: PayloadAction<OrderProps>) {
+      const index = state.orders.findIndex((order) => order.id === payload.id);
+      state.orders[index].status = payload.status;
+      return state;
+    },
   },
 });
 
-export const { setOrders } = slice.actions;
+export const { setOrders, setStatus } = slice.actions;
 
 export default slice.reducer;
 
@@ -33,5 +38,18 @@ export function asyncFetchOrders() {
     });
 
     dispatch(setOrders(response.data));
+  };
+}
+export function asyncSetStatus(id: string, status: string) {
+  return async function (dispatch: AppDispatch) {
+    const accessToken = localStorage.getItem("@delliv:accessToken");
+    const response = await api.patch(
+      `/orders/${id}`,
+      { status },
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+    dispatch(setStatus(response.data));
   };
 }

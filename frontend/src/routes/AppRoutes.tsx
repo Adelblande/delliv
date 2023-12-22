@@ -5,7 +5,6 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about" element={<Home />} />
     </Routes>
   );
 }
