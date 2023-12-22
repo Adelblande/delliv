@@ -27,6 +27,7 @@ export class AuthService {
 
     return {
       accessToken,
+      user: { ...user, password: undefined },
     };
   }
 }
