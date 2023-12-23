@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppDispatch } from ".";
 import { api } from "../utils/api";
 
-type OrderProps = {
+export type OrderProps = {
   id: string;
   name: string;
   address: string;

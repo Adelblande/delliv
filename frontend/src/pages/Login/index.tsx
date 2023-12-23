@@ -12,7 +12,13 @@ export function Login() {
   return (
     <TemplateLogin>
       <Box width={500} height={500}>
-        <img src="/src/assets/logo.jpeg" alt="logo" width={150} height={150} />
+        <img
+          src="/src/assets/logo.jpeg"
+          alt="logo"
+          width={150}
+          height={150}
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+        />
 
         <form>
           <Input

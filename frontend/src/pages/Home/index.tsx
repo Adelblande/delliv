@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { asyncFetchOrders } from "../../store/ordersSlice";
 import { RootState, useAppDispatch } from "../../store";
 import { TemplateHome } from "../../components/templates/TemplateHome";
-import { BoxInline } from "../../components/molecules";
+import { BoxInlineList } from "../../components/organisms";
 
 export function Home() {
   const dispatch = useAppDispatch();
@@ -15,11 +15,7 @@ export function Home() {
 
   return (
     <TemplateHome>
-      <div>
-        {orders?.map((order) => (
-          <BoxInline data={order} />
-        ))}
-      </div>
+      <BoxInlineList data={orders} />
     </TemplateHome>
   );
 }

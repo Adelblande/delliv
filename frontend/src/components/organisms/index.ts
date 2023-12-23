@@ -1,1 +1,1 @@
-
+export { BoxInlineList } from "./BoxInlineList";

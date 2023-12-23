@@ -5,6 +5,7 @@ export const Container = styled.input`
   height: 40px;
   border-radius: 4px;
   border: 1px solid #c3c3c3;
-  padding: 20px;
+  padding: 16px;
+  font-size: 16px;
   margin-bottom: 10px;
 `;
