@@ -3,14 +3,18 @@ import { AppRoutes } from "./routes/AppRoutes";
 import { AuthRoutes } from "./routes/AuthRoutes";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
+import GlobalStyles from "./styles/GlobalStyles";
 
 export function App() {
   const accessToken = localStorage.getItem("@delliv:accessToken");
   const { isAuthenticated } = useSelector((state: RootState) => state.user);
 
   return (
-    <BrowserRouter>
-      {isAuthenticated || accessToken ? <AppRoutes /> : <AuthRoutes />}
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        {isAuthenticated || accessToken ? <AppRoutes /> : <AuthRoutes />}
+      </BrowserRouter>
+      <GlobalStyles />
+    </>
   );
 }
