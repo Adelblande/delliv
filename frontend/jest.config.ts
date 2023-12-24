@@ -1,4 +1,9 @@
 /**
+ * npm i jest @types/jest ts-node -D
+ * npm i @swc/cli @swc/core -D
+ * npm i @testing-library/react @testing-library/jest-dom @testing-library/user-event -D
+ * npm i jest-environment-jsdom -D
+ *
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
