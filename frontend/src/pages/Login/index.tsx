@@ -1,8 +1,8 @@
-import { asyncLogin } from "../../store/userSlice";
 import { SetStateAction, useState } from "react";
+import { asyncLogin } from "../../store/userSlice";
 import { useAppDispatch } from "../../store";
 import { Button, Input, Box } from "../../components/atoms";
-import { TemplateLogin } from "../../components/templates/TemplateLogin";
+import { TemplateLogin } from "../../components/templates";
 
 export function Login() {
   const dispatch = useAppDispatch();
@@ -19,7 +19,6 @@ export function Login() {
           height={150}
           style={{ marginLeft: "auto", marginRight: "auto" }}
         />
-
         <form>
           <Input
             type="text"
@@ -37,8 +36,11 @@ export function Login() {
           />
           <Button
             type="button"
+            disabled={!email && !password}
             onClick={() => dispatch(asyncLogin(email, password))}
-          />
+          >
+            Entrar
+          </Button>
         </form>
       </Box>
     </TemplateLogin>

@@ -1,10 +1,10 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Button } from ".";
 
 describe("Button", () => {
   it("Button renders correctly", () => {
-    const { getByText } = render(<Button>Entrar</Button>);
+    render(<Button>Entrar</Button>);
 
-    expect(getByText("Entrar")).toBeInTheDocument();
+    expect(screen.getByText("Entrar")).toBeInTheDocument();
   });
 });

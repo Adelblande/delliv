@@ -9,7 +9,6 @@ interface SelectProps {
   name: string;
   dataOptions: Option[];
   value: Option;
-  // handleChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleChange?: (newValue: SingleValue<Option>) => void;
 }
 

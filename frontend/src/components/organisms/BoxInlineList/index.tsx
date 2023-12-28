@@ -10,7 +10,7 @@ export function BoxInlineList({ data }: BoxInlineListProps) {
   return (
     <Container>
       {data?.map((order) => (
-        <BoxInline data={order} />
+        <BoxInline key={order.id} data={order} />
       ))}
     </Container>
   );

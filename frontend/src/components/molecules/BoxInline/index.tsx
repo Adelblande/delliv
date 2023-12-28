@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../../../store";
 import { asyncSetStatus } from "../../../store/ordersSlice";
-import { Box, Input, CustomSelect } from "../../atoms";
+import { Box, CustomSelect } from "../../atoms";
 import { Container } from "./styles";
 
 interface Order {
@@ -33,12 +33,12 @@ export function BoxInline({ data }: BoxInlineProps) {
   };
 
   return (
-    <Container key={`line-${data.id}`}>
+    <Container>
       <Box width={300} height={50}>
-        <Input type="text" disabled value={data.name} />
+        {data.name}
       </Box>
       <Box width={600} height={50}>
-        <Input type="text" disabled value={data.address} />
+        {data.address}
       </Box>
       <Box width={300} height={50}>
         <CustomSelect

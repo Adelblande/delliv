@@ -4,7 +4,7 @@ export const Container = styled.button`
   border-radius: 4px;
   background: var(--purple-400);
   width: 100%;
-  height: 45px;
+  height: 40px;
   color: var(--white);
   font-family: Roboto;
   font-weight: bold;
@@ -13,6 +13,7 @@ export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 
   svg {
     margin-right: 8px;

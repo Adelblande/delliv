@@ -23,10 +23,14 @@ const slice = createSlice({
       state.orders[index].status = payload.status;
       return state;
     },
+    add(state, { payload }: PayloadAction<Omit<OrderProps, "id, status">>) {
+      state.orders.push(payload);
+      return state;
+    },
   },
 });
 
-export const { setOrders, setStatus } = slice.actions;
+export const { setOrders, setStatus, add } = slice.actions;
 
 export default slice.reducer;
 
@@ -40,6 +44,7 @@ export function asyncFetchOrders() {
     dispatch(setOrders(response.data));
   };
 }
+
 export function asyncSetStatus(id: string, status: string) {
   return async function (dispatch: AppDispatch) {
     const accessToken = localStorage.getItem("@delliv:accessToken");
@@ -51,5 +56,19 @@ export function asyncSetStatus(id: string, status: string) {
       }
     );
     dispatch(setStatus(response.data));
+  };
+}
+
+export function asyncAdd(name: string, address: string) {
+  return async function (dispatch: AppDispatch) {
+    const accessToken = localStorage.getItem("@delliv:accessToken");
+    const response = await api.post(
+      `/orders`,
+      { name, address, status: "Pendente" },
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+    dispatch(add(response.data));
   };
 }
