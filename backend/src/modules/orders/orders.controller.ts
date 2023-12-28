@@ -19,13 +19,11 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
-  // @UseGuards(AuthGuard('jwt'))
   create(@Body() createOrderDto: CreateOrderDto) {
     return this.ordersService.create(createOrderDto);
   }
 
   @Get()
-  //
   findAll() {
     return this.ordersService.findAll();
   }
