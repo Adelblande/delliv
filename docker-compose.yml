@@ -12,7 +12,9 @@ services:
         target: /home/app
     tty: true
     container_name: delliv-app
-  
+    depends_on:
+      - api
+
   api:
     build: ./backend
     ports:
@@ -20,6 +22,8 @@ services:
     volumes:
       - ./backend:/home/node/app
     container_name: delliv-api
+    depends_on:
+      - db
 
   db:
     image: postgres:13-alpine
@@ -31,5 +35,5 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=delliv
     ports:
-      - '5432:5432'
-    container_name: delliv-db  
+      - "5432:5432"
+    container_name: delliv-db
