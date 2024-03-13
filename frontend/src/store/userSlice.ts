@@ -21,7 +21,7 @@ const slice = createSlice({
     login(state, { payload }: PayloadAction<UserProps>) {
       return {
         ...state,
-        id: payload.id,
+        id: payload?.id,
         email: payload.email,
         name: payload.name,
         isAuthenticated: true,

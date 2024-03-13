@@ -2,8 +2,9 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 import { Home } from ".";
 import store from "../../store";
-import userEvent from "@testing-library/user-event";
+
 import * as reactRedux from "react-redux";
+import userEvent from "@testing-library/user-event";
 
 const useSelector = jest.spyOn(reactRedux, "useSelector");
 

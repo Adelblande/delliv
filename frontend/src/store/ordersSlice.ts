@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { AppDispatch } from ".";
 import { api } from "../utils/api";
 
@@ -21,10 +22,12 @@ const slice = createSlice({
     setStatus(state, { payload }: PayloadAction<OrderProps>) {
       const index = state.orders.findIndex((order) => order.id === payload.id);
       state.orders[index].status = payload.status;
+      toast.success("Status alterado com sucesso.");
       return state;
     },
     add(state, { payload }: PayloadAction<Omit<OrderProps, "id, status">>) {
       state.orders.push(payload);
+      toast.success("Pedido incluído com sucesso.");
       return state;
     },
   },
@@ -55,6 +58,7 @@ export function asyncSetStatus(id: string, status: string) {
         headers: { Authorization: `Bearer ${accessToken}` },
       }
     );
+
     dispatch(setStatus(response.data));
   };
 }

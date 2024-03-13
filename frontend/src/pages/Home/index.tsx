@@ -1,14 +1,18 @@
-import { useSelector } from "react-redux";
 import { SetStateAction, useEffect, useState } from "react";
-import { asyncFetchOrders, asyncAdd } from "../../store/ordersSlice";
-import { RootState, useAppDispatch } from "../../store";
-import { TemplateHome } from "../../components/templates";
-import { BoxInlineList } from "../../components/organisms";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "../../components/atoms";
+import { BoxInlineList } from "../../components/organisms";
+import { TemplateHome } from "../../components/templates";
+import { RootState, useAppDispatch } from "../../store";
+import { asyncAdd, asyncFetchOrders } from "../../store/ordersSlice";
 
 export function Home() {
   const dispatch = useAppDispatch();
   const { orders } = useSelector((state: RootState) => state.orders);
+  const accessToken = localStorage.getItem("@delliv:accessToken");
+  const { isAuthenticated } = useSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -22,6 +26,13 @@ export function Home() {
   useEffect(() => {
     dispatch(asyncFetchOrders());
   }, []);
+
+  useEffect(() => {
+    console.log(isAuthenticated, accessToken);
+    if (!isAuthenticated && !accessToken) {
+      return navigate("/login");
+    }
+  }, [isAuthenticated, accessToken]);
 
   return (
     <TemplateHome>
